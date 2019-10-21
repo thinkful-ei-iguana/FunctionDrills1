@@ -1,6 +1,9 @@
 function getYearOfBirth(age){
-    if (age < 0){
+    if (age < 0 ){
         throw new Error ("Age can not be negative!!");
+    }
+    if (age === typeof("undefined")){
+        throw new Error (" Argument is invalid.");
     }
     
     return 2019 - age;
