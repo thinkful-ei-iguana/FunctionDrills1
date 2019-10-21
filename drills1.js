@@ -1,25 +1,28 @@
+
 function getYearOfBirth(age){
-    if (age < 0 ){
-        throw new Error ("Age can not be negative!!");
+    if (age < 0){
+        throw new Error ('Age can not be negative!!');
     }
-    if (age === typeof("undefined")){
-        throw new Error (" Argument is invalid.");
-    }
-    
+    else if (typeof(age) !== "number"){
+        throw new Error ('Age must be defined as a number.');
+    } 
+    else 
     return 2019 - age;
 
 }
 
 function createGreeting(name, age){
-    const yearOf = 2019 - age;
-    return `Hi my name is ${name} and I am ${age} years old. I was born on ${yearOf}`;
+    if (typeof(age) === "undefined" || typeof(name) === "undefined"){
+        throw new Error ('Arguments not valid')
+    }
+    const yearOf = getYearOfBirth(age);
+    return `Hi my name is ${name} and I am ${age} years old. I was born in ${yearOf}`;
 }
+let newGreeting;
+
 try {
-
-    const newGreeting = createGreeting(name, age);
-    return newGreeting;
-    
-
+    newGreeting = createGreeting('Michael', 29);
 }catch (err){
-    console.error('Age cannot be less than 0');
+    console.error(err);
 }
+console.log(newGreeting);
